@@ -26,6 +26,10 @@ func child() {
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
+	syscall.Chroot("/home/alex/code/chocker/ubuntu")
+	os.Chdir("/")
+	syscall.Mount("proc", "proc", "proc", 0, "")
+
 	err := cmd.Run()
 	if err != nil {
 		panic(err)
